@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Page Title</title>
+  <title>Rock Paper Scissors</title>
   <meta charset="UTF-8"/>
-  <script src="rps.js"></script>
+  <link rel="stylesheet" href="rps-styles.css"/>
 </head>
 <body>
- 
+  <div class="core">
+    <h1 class="title">ROCK PAPER SCISSORS</h1>
+    <div id="scoreboard">Player Score
+      <div class=score id="playerscore"></div>
+      <div class=score id="computerscore"></div>Computer Score
+    </div>
+    <div type="text" class="outcome"></div>
+    <div class="buttons">
+      <button type="submit" class="button" id="r" value="Rock">Rock</button>
+      <button type="submit" class="button" id="p" value="Paper">Paper</button>
+      <button type="submit" class="button" id="s" value="Scissors">Scissors</button>
+    </div>
+    <div class="restartDiv">
+      <button type="submit" class="restart-btn">Restart Game</button>            
+    </div>
+  </div>
+  <div class="demar">
+    <img src="images-rps/demar.png" alt=""> 
+  </div>
+  <div class="kyle">
+     <img src="images-rps/kyle.png" alt=""> 
+  </div>
+<script src="rps.js"></script>
 </body>
 </html>

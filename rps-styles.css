@@ -1,0 +1,107 @@
+.buttons {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+    width: 600px;
+    background-color: #DB3EB1;
+    border-color: black;
+    border-radius: 24px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+}
+.title {
+    font-family: 'helvetica';
+    color: #DB3EB1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -5rem;
+}
+body {
+    background-color: #41B6E6;
+}
+.core {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 9rem;
+}
+.button {
+    display: inline-block;
+    padding: 5px;
+    margin: 15px;
+    cursor: pointer;
+    width: 200px;
+}
+.demar {
+    display: flex;
+    justify-content: flex-start;
+    margin-right: 27px;
+    position: absolute;
+    bottom: 0;
+}
+.kyle {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 27px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.outcome {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 5px;
+    height: 75px;
+    width: 600px;
+    background-color: #DB3EB1;
+    border-color: black;
+    border-radius: 24px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em; 
+    font-family: 'helvetica';
+    font-size: large;
+}
+#scoreboard {
+    border: 2px solid black;
+    padding: 15px;
+    margin: 5px;
+    height: 75px;
+    width: 600px;
+    background-color: #DB3EB1;
+    border-color: black;
+    border-radius: 24px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em; 
+    font-family: 'helvetica';
+    font-size: large;
+    justify-content: space-between;
+}
+.score {
+    border: 2px solid black;
+    height: 50px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.restartDiv {
+    border: 2px solid black;
+    padding: 10px;
+    height: 45px;
+    width: 100px;
+    background-color: #DB3EB1;
+    border-radius: 24px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+}
+

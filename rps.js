@@ -1,65 +1,93 @@
 let playerScore = 0;
 let computerScore = 0;
+let playerScore_span = document.getElementById("playerscore");
+let computerScore_span = document.getElementById("computerscore");
+let outcomeDiv = document.querySelector('.outcome');
+let rockDiv = document.getElementById("r");
+let paperDiv = document.getElementById('p');
+let scissorsDiv = document.getElementById('s');
+let restart = document.querySelector('.restart-btn');
 
 /* This function generates a random choice among rock, paper and scissors for the computer */
 function computerPlay() {
-    let choices = ['rock','paper','scissors'];
+    let choices = ['Rock','Paper','Scissors'];
     return choices[Math.floor(Math.random() *choices.length)];
 }
-/* This function handles 1 round of the game */
+
+function disable() {
+    rockDiv.disabled = true;
+    paperDiv.disabled = true;
+    scissorsDiv.disabled = true;
+}
+
+function win(playerSelection, computerSelection) {
+    playerScore++;
+    playerScore_span.innerHTML = playerScore;
+    computerScore_span.innerHTML = computerScore;
+    outcomeDiv.innerHTML = playerSelection + " (You) beats " + computerSelection + ". You win!";
+}
+
+function draw(playerSelection, computerSelection) {
+    outcomeDiv.innerHTML = "The computer also chose " + playerSelection + " It\s a draw!";
+}
+
+function lose(playerSelection, computerSelection) {
+    computerScore++;
+    playerScore_span.innerHTML = playerScore;
+    computerScore_span.innerHTML = computerScore;
+    outcomeDiv.innerHTML = computerSelection + " beats " + playerSelection + ". You lose!";
+}
+
 function gameRound(playerSelection) {
     let computerSelection = computerPlay();
 
-    if (playerSelection === "rock"){
-        if (computerSelection === 'rock') {
-            return "Opponent chose rock, its a tie!";
+    if ((playerSelection === 'Rock' && computerSelection === 'Scissors') ||
+        (playerSelection === 'Paper' && computerSelection=== 'Rock') ||
+        (playerSelection === 'Scissors' && computerSelection === 'Paper')) {
+            win(playerSelection, computerSelection);
         }
-        else if (computerSelection === 'paper') {
-            return "Opponent chose paper, you lose!";
-        }
-        return "Opponent chose scissors, you win!";
-    }
-    if (playerSelection === "paper"){
-        if (computerSelection === 'paper') {
-            return "Opponent chose paper, its a tie!";
-        }
-        else if (computerSelection === 'scissors') {
-            return "Opponent chose scissors, you lose!";
-        }
-        return "Opponent chose rock, you win!";
-    }
-    if (playerSelection === "scissors"){
-        if (computerSelection === 'scissors') {
-            return "Opponent chose scissors, its a tie!";
-        }
-        else if (computerSelection === 'rock') {
-            return "Opponent chose rock, you lose!";
-        }
-        return "Opponent chose paper, you win!";
-    }
-}
-/* This function allows to play a game of first to win 5 rounds */
-function game(playerSelection) {
-    let result = gameRound(playerSelection);
-
-    if (playerScore >= 4 && computerScore < 4) {
-        return "Game over. You win!";
-    }
-    else if (playerScore < 4 && computerScore >= 4) {
-        return "Game over. You lose!";
-    }
-    else {
-        if (result.search("you win!") > -1) {
-            playerScore++;
-            return "your player score is: " + playerScore;
-        }
-        else if (result.search("you lose!") > -1) {
-            computerScore++;
-            return "computer score is: " + computerScore;
+        else if (playerSelection === computerSelection) {
+            draw(playerSelection, computerSelection);
         }
         else {
-            return "tie!";
+            lose(playerSelection, computerSelection);
         }
+}
+
+function endgame() {
+    if (playerScore === 5 && computerScore <= 5) {
+        disable();
+        outcomeDiv.innerHTML = "You defeated the computer.";
+    }
+    else if (computerScore === 5 && playerScore <= 5) {
+        disable();
+        outcomeDiv.innerHTML = "The computer defeated you.";
+    }
+    else {
+        return;
     }
 }
+
+function main() {
+    rockDiv.addEventListener('click', function() {
+        gameRound('Rock');
+        endgame(); 
+    })
+
+    paperDiv.addEventListener('click', function() {
+        gameRound('Paper');
+        endgame();
+    })
+
+    scissorsDiv.addEventListener('click', function() {
+        gameRound('Scissors');
+        endgame();
+    })
+    restart.addEventListener('click', function(){
+        window.location.reload();
+        return false;
+    });
+
+}
+main();
 
